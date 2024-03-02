@@ -16,7 +16,7 @@ export default function About() {
 
                 <div className="about-content d-flex gap-5 align-items center h-100">
                     <img src={Profile} className="about-img img-fluid rounded-circle" />
-                    <p class="lead">
+                    <p className="lead">
                         I am a full stack web developer from Boston MA. I started writing
                         code about 16 years ago. I started with Java and then moved to web
                         technologies like HTML, CSS, JavaScript and PHP. I have worked for
