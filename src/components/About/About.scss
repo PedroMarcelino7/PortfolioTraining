@@ -1,0 +1,9 @@
+.about-img {
+    width: 200px;
+}
+
+@media(max-width:767px) {
+    .about-content {
+        flex-direction: column;
+    }
+}
