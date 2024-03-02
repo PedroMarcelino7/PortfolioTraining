@@ -1,10 +1,25 @@
-import './Header.scss'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+import './Header.scss';
 
 export default function Header() {
+    const [text, setText] = useState('');
+    const [index, setIndex] = useState(0);
+    const phrases = ["I am Pedro Marcelino."];
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setText(prevText => {
+                const currentIndex = prevText.length >= phrases[index].length ? (index + 1) % phrases.length : index;
+                return phrases[currentIndex].substring(0, prevText.length + 1);
+            });
+        }, 150);
+    
+        return () => clearTimeout(timer);
+    }, [text, index, phrases]);
+
     return (
         <header className="header vh-100 text-center position-relative">
             <div className="text-container position-relative d-flex flex-column justify-content-center align-items-center h-100">
@@ -12,8 +27,8 @@ export default function Header() {
                     Hello, World.
                 </h5>
 
-                <h1 id="typing-text" className="display-1 fw-bold text-white">
-                    I am Pedro Marcelino
+                <h1 id="typing-text" className="fw-bold text-white">
+                    {text}
                 </h1>
 
                 <p className="roles text-white text-uppercase fs-4">
@@ -54,5 +69,5 @@ export default function Header() {
                 </div>
             </div>
         </header>
-    )
+    );
 }
